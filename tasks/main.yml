@@ -1,0 +1,24 @@
+- name: install packages
+  sudo: yes
+  yum:
+    name: "{{ item.name }}"
+    state: present
+    enablerepo: "{{ item.enablerepo | default('') }}"
+  with_items: httpd_install_packages
+
+- name: configure httpd.conf
+  sudo: yes
+  template:
+    dest: /etc/httpd/conf/httpd.conf
+    src: httpd.conf.j2
+    group: root
+    owner: root
+    mode: 0644
+  notify: httpd graceful
+
+- name: ensure started httpd service
+  sudo: yes
+  service:
+    name: httpd
+    state: started
+    enabled: yes

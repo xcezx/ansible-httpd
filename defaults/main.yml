@@ -1,0 +1,82 @@
+httpd_install_packages:
+  - { name: "httpd", enablerepo: ~ }
+  - { name: "httpd-devel", enablerepo: ~ }
+  - { name: "mod_ssl", enablerepo: ~ }
+
+httpd_ServerTokens: "Prod"
+httpd_ServerRoot: "/etc/httpd"
+httpd_PidFile: "run/httpd.pid"
+httpd_Timeout: 60
+httpd_KeepAlive: "Off"
+httpd_MaxKeepAliveRequests: 100
+httpd_KeepAliveTimeout: 15
+
+httpd_prefork_StartServers: 8
+httpd_prefork_MinSpareServers: 5
+httpd_prefork_MaxSpareServers: 20
+httpd_prefork_ServerLimit: 256
+httpd_prefork_MaxClients: 256
+httpd_prefork_MaxRequestsPerChild: 4000
+
+httpd_worker_StartServers: 4
+httpd_worker_MaxClients: 300
+httpd_worker_MinSpareThreads: 25
+httpd_worker_MaxSpareThreads: 75
+httpd_worker_ThreadsPerChild: 25
+httpd_worker_MaxRequestsPerChild: 0
+
+httpd_Listen: 80
+
+httpd_LoadModules:
+  - auth_basic
+  - auth_digest
+  - authn_file
+  - authn_alias
+  - authn_anon
+  - authz_dbm
+  - authn_default
+  - authz_host
+  - authz_user
+  - authz_owner
+  - authz_groupfile
+  - authz_dbm
+  - authz_default
+  - ldap
+  - authnz_ldap
+  - include
+  - log_config
+  - logio
+  - env
+  - ext_filter
+  - mime_magic
+  - expires
+  - deflate
+  - headers
+  - usertrack
+  - setenvif
+  - mime
+  - dav
+  - status
+  - autoindex
+  - info
+  - dav_fs
+  - vhost_alias
+  - negotiation
+  - dir
+  - actions
+  - speling
+  - userdir
+  - alias
+  - substitute
+  - rewrite
+  - proxy
+  - proxy_balancer
+  - proxy_ftp
+  - proxy_http
+  - proxy_ajp
+  - proxy_connect
+  - cache
+  - suexec
+  - disk_cache
+  - cgi
+  - version
