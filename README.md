@@ -1,4 +1,4 @@
-httpd
+httpd [![Build Status](https://travis-ci.org/xcezx/ansible-httpd.svg)](https://travis-ci.org/xcezx/ansible-httpd)
 ========
 
 install and configuration httpd
