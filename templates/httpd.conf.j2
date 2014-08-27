@@ -455,9 +455,9 @@ LogFormat "%{User-agent}i" agent
 # requires the mod_logio module to be loaded.
 #LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
 
-{% raw %}
-LogFormat "time:%{%Y-%m-%dT%H:%M:%S}t\thost:%h\tuuid:%{uuid}n\tuser_id:%{user_id}n\tstatus:%>s\treq:%r\tptime:%D\tpath:%U\tquery:%q\tsize:%b\treferer:%{Referer}i\tua:%{User-Agent}i" custom_ltsv
-{% endraw %}
+{% for LogFormat in httpd_CustomLogFormats %}
+{{ LogFormat }}
+{% endfor %}
 
 #
 # The location and format of the access logfile (Common Logfile Format).

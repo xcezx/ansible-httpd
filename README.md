@@ -27,6 +27,7 @@ Role Variables
 - `httpd_worker_ThreadsPerChild`
 - `httpd_worker_MaxRequestsPerChild`
 - `httpd_Listen`
+- `httpd_CustomLogFormats`
 - `httpd_LoadModules`
 
 Example Playbook

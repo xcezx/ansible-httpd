@@ -27,6 +27,9 @@ httpd_worker_MaxRequestsPerChild: 0
 
 httpd_Listen: 80
 
+httpd_CustomLogFormats:
+  - LogFormat "host:%h\tident:%l\tuser:%u\ttime:%t\treq:%r\tstatus:%>s\tsize:%b\treferer:\%{Referer}i\tua:%{User-Agent}i" combined_ltsv
+
 httpd_LoadModules:
   - auth_basic
   - auth_digest
