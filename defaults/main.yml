@@ -26,9 +26,23 @@ httpd_worker_ThreadsPerChild: 25
 httpd_worker_MaxRequestsPerChild: 0
 
 httpd_Listen: 80
+httpd_ErrorLog: logs/error_log
+httpd_LogLevel: warn
 
 httpd_CustomLogFormats:
   - LogFormat "host:%h\tident:%l\tuser:%u\ttime:%t\treq:%r\tstatus:%>s\tsize:%b\treferer:\%{Referer}i\tua:%{User-Agent}i" combined_ltsv
+
+httpd_ServerAdmin: root@localhost
+httpd_ServerName: www.example.com:80
+httpd_ExtendedStatus: Off
+httpd_UseCanonicalName: Off
+httpd_ServerSignature: On
+httpd_DirectoryIndex:
+  - index.html
+  - index.html.var
+httpd_AccessFileName: .htaccess
+httpd_HostnameLookups: Off
+httpd_TraceEnable: On
 
 httpd_LoadModules:
   - auth_basic

@@ -177,7 +177,7 @@ Include conf.d/*.conf
 # information (ExtendedStatus On) or just basic information (ExtendedStatus
 # Off) when the "server-status" handler is called. The default is Off.
 #
-#ExtendedStatus On
+ExtendedStatus {{ httpd_ExtendedStatus }}
 
 #
 # If you wish httpd to run as a different user or group, you must run
@@ -211,7 +211,8 @@ Group apache
 # e-mailed.  This address appears on some server-generated pages, such
 # as error documents.  e.g. admin@your-domain.com
 #
-ServerAdmin root@localhost
+#ServerAdmin root@localhost
+ServerAdmin  {{ httpd_ServerAdmin }}
 
 #
 # ServerName gives the name and port that the server uses to identify itself.
@@ -226,6 +227,7 @@ ServerAdmin root@localhost
 # redirections work in a sensible way.
 #
 #ServerName www.example.com:80
+ServerName {{ httpd_ServerName }}
 
 #
 # UseCanonicalName: Determines how Apache constructs self-referencing 
@@ -234,7 +236,8 @@ ServerAdmin root@localhost
 # by the client.  When set "On", Apache will use the value of the
 # ServerName directive.
 #
-UseCanonicalName Off
+#UseCanonicalName Off
+UseCanonicalName {{ httpd_UseCanonicalName }}
 
 #
 # DocumentRoot: The directory out of which you will serve your
@@ -351,14 +354,18 @@ DocumentRoot "/var/www/html"
 # negotiated documents.  The MultiViews Option can be used for the 
 # same purpose, but it is much slower.
 #
-DirectoryIndex index.html index.html.var
+#DirectoryIndex index.html index.html.var
+DirectoryIndex {% for i in httpd_DirectoryIndex %} {{ i }} {% endfor %}
+
+
 
 #
 # AccessFileName: The name of the file to look for in each directory
 # for additional configuration directives.  See also the AllowOverride
 # directive.
 #
-AccessFileName .htaccess
+#AccessFileName .htaccess
+AccessFileName {{ httpd_AccessFileName }}
 
 #
 # The following lines prevent .htaccess and .htpasswd files from being 
@@ -405,7 +412,7 @@ DefaultType text/plain
 # each client request will result in AT LEAST one lookup request to the
 # nameserver.
 #
-HostnameLookups Off
+HostnameLookups {{ httpd_HostnameLookups }}
 
 #
 # EnableMMAP: Control whether memory-mapping is used to deliver
@@ -433,14 +440,15 @@ HostnameLookups Off
 # logged here.  If you *do* define an error logfile for a <VirtualHost>
 # container, that host's errors will be logged there and not here.
 #
-ErrorLog logs/error_log
+#ErrorLog logs/error_log
+ErrorLog {{ httpd_ErrorLog }}
 
 #
 # LogLevel: Control the number of messages logged to the error_log.
 # Possible values include: debug, info, notice, warn, error, crit,
 # alert, emerg.
 #
-LogLevel warn
+LogLevel {{ httpd_LogLevel }}
 
 #
 # The following directives define some format nicknames for use with
@@ -489,7 +497,8 @@ CustomLog logs/access_log combined
 # Set to "EMail" to also include a mailto: link to the ServerAdmin.
 # Set to one of:  On | Off | EMail
 #
-ServerSignature On
+#ServerSignature On
+ServerSignature {{ httpd_ServerSignature }}
 
 #
 # Aliases: Add here as many aliases as you need (with no limit). The format is 
@@ -963,3 +972,5 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 #    ErrorLog logs/dummy-host.example.com-error_log
 #    CustomLog logs/dummy-host.example.com-access_log common
 #</VirtualHost>
+
+TraceEnable {{ httpd_TraceEnable }}
