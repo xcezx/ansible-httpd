@@ -27,6 +27,18 @@ Role Variables
 - `httpd_worker_ThreadsPerChild`
 - `httpd_worker_MaxRequestsPerChild`
 - `httpd_Listen`
+- `httpd_ErrorLog`
+- `httpd_LogLevel`
+- `httpd_ServerAdmin`
+- `httpd_ServerName`
+- `httpd_ExtendedStatus`
+- `httpd_UseCanonicalName`
+- `httpd_ServerSignature`
+- `httpd_DirectoryIndex`
+- `httpd_AccessFileName`
+- `httpd_HostnameLookups`
+- `httpd_TraceEnable`
+- `httpd_ServerAdmin`
 - `httpd_CustomLogFormats`
 - `httpd_LoadModules`
 
