@@ -34,15 +34,15 @@ httpd_CustomLogFormats:
 
 httpd_ServerAdmin: root@localhost
 httpd_ServerName: www.example.com:80
-httpd_ExtendedStatus: Off
-httpd_UseCanonicalName: Off
-httpd_ServerSignature: On
+httpd_ExtendedStatus: "Off"
+httpd_UseCanonicalName: "Off"
+httpd_ServerSignature: "On"
 httpd_DirectoryIndex:
   - index.html
   - index.html.var
 httpd_AccessFileName: .htaccess
-httpd_HostnameLookups: Off
-httpd_TraceEnable: On
+httpd_HostnameLookups: "Off"
+httpd_TraceEnable: "On"
 
 httpd_LoadModules:
   - auth_basic
