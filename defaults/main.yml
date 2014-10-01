@@ -56,7 +56,6 @@ httpd_LoadModules:
   - authz_user
   - authz_owner
   - authz_groupfile
-  - authz_dbm
   - authz_default
   - ldap
   - authnz_ldap
